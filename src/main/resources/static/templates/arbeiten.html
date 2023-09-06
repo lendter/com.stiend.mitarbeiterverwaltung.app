@@ -1,0 +1,40 @@
+<div class="card grid gap-2" style="margin: 1.5rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><label>Schichten Eintragen</label></li>
+      <li class="list-group-item">
+        <ul id="schicht-container" class="list-group list-group-flush" style="padding-left: 1.5rem;">
+            <label>Schichtarbeiter</label>
+        </ul>
+      </li>
+    </ul>
+    <div id="abteilungName" class="card-footer"></div>
+</div>
+<div class="modal fade" id="schichtDialog" tabindex="-1" aria-labelledby="schichtDialogLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="schichtDialogLabel">Schicht hinzufügen</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <di class="modal-body">
+            <div id="addSchicht" class="card" style="padding: 2rem; margin: top 0.5em;">
+                <label>Schicht hinzufügen</label>
+                <div class="card" style="padding: 2rem; margin: top 0.5em;">
+                    <div class="mb-3">
+                        <label id="nameLabel" class="form-label"></label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputAnzahlStunden" class="form-label">Stunden</label>
+                        <input type="number" class="form-control" id="inputAnzahlStunden">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+              <button type="button" class="btn btn-primary" onclick="addSchicht()">Hinzufügen</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

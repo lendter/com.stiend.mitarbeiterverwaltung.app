@@ -1,0 +1,85 @@
+<div class="card grid gap-2" style="margin: 1.5rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><label>Mitarbeiter Verwaltung</label>  <button class="btn btn-primary" style="float:right;" type="button" data-bs-target="#mitarbeiterDialog" onclick="resetForm()" data-bs-toggle="modal"><span class="material-symbols-outlined" style="float:left;width:auto;">
+        add
+        </span><label>Hinzufügen</label></button></li>
+      <li class="list-group-item">
+        <ul id="mitarbeiter-container" class="list-group list-group-flush" style="padding-left: 1.5rem;">
+            <label>Mitarbeiter</label>
+        </ul>
+      </li>
+    </ul>
+    <div id="abteilungName" class="card-footer"></div>
+</div>
+<div class="modal fade" id="mitarbeiterDialog" tabindex="-1" aria-labelledby="mitarbeiterDialogLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="mitarbeiterDialogLabel">Mitarbeiter hinzufügen</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <di class="modal-body">
+            <input type="radio" onchange="changeMitarbeiterView(event)" class="btn-check" name="options-base" id="schicht" autocomplete="off" checked>
+            <label class="btn" for="schicht">Schichtarbeiter</label>
+            <input type="radio" onchange="changeMitarbeiterView(event)" class="btn-check" name="options-base" id="buero" autocomplete="off">
+            <label class="btn" for="buero">Büroarbeiter</label>
+            <div id="addBuero" class="card" style="display: none; padding: 2rem; margin: top 0.5em;">
+                <label>Büroarbeiter hinzufügen</label>
+                <div class="card" style="padding: 2rem; margin: top 0.5em;">
+                    <div class="mb-3">
+                        <label for="inputNameB" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="inputNameB">
+                      </div>
+                      <div class="mb-3">
+                        <label for="inputFestgehalt" class="form-label">Gehalt</label>
+                        <input type="number" class="form-control" id="inputFestgehalt">
+                      </div>
+                </div>
+            </div>
+            <div id="addSchicht" class="card" style="padding: 2rem; margin: top 0.5em;">
+                <label>Schichtarbeiter hinzufügen</label>
+                <div class="card" style="padding: 2rem; margin: top 0.5em;">
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="inputName">
+                      </div>
+                      <div class="mb-3">
+                        <label for="inputStundensatz" class="form-label">Stundensatz</label>
+                        <input type="number" class="form-control" id="inputStundensatz">
+                      </div>
+                      <div class="mb-3">
+                        <label for="inputStunde" class="form-label">Bereits gearbeitete Stunden</label>
+                        <input type="number" class="form-control" id="inputStunden" value="0">
+                      </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+              <button type="button" class="btn btn-primary" onclick="addMitarbeiter()">Hinzufügen</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="mitarbeiterRemoveDialog" tabindex="-1" aria-labelledby="mitarbeiterRemoveDialogLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="mitarbeiterRemoveDialogLabel">Mitarbeiter entfernen</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <di class="modal-body">
+           <div class="card" style="padding: 2rem; margin: top 0.5em;">
+                <label>Wollen Sie wirklich folgenden Mitarbeiter aus der Verwaltung entfernen?</label>
+                <div id="removeMitarbeiter" class="card" style="padding: 2rem; margin: top 0.5em;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+                <button type="button" class="btn btn-warning" onclick="removeMitarbeiter()">Entfernen</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
