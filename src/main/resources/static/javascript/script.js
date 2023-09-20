@@ -1,5 +1,8 @@
 const baseUrl = "/verwaltung/api";
 
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 function loadTemplates(file){
     console.log("loadTemplates  "+ file);
     return new Promise((resolve) => {
@@ -82,13 +85,13 @@ async function addGehaltView(){
 
 function addGehalt(line){
 	if(line.includes("<BueroArbeiter>")){
-		line = line.replace("<BueroArbeiter>", "<span class='material-symbols-outlined icon icon-gehalt'>description</span> ");
+		line = line.replace("<BueroArbeiter>", "<span class='material-symbols-outlined icon icon-gehalt pointer' data-bs-toggle='tooltip' title='Buero Arbeiter'>person</span> ");
 	}
 	if(line.includes("<SchichtArbeiter>")){
-		line = line.replace("<SchichtArbeiter>", "<span class='material-symbols-outlined icon icon-gehalt'>assignment_ind</span> ");	
+		line = line.replace("<SchichtArbeiter>", "<span class='material-symbols-outlined icon icon-gehalt pointer' data-bs-toggle='tooltip' title='Schicht Arbeiter'>engineering</span> ");	
 	}
 	if(line.includes("<Manager>")){
-		line = line.replace("<Manager>", "<span class='material-symbols-outlined icon icon-gehalt'>manage_accounts</span> ");		
+		line = line.replace("<Manager>", "<span class='material-symbols-outlined icon icon-gehalt pointer' data-bs-toggle='tooltip' title='Manager'>manage_accounts</span> ");		
 	}
 	console.log(line);
 	let card = document.createElement("div");
