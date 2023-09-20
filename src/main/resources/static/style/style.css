@@ -1,3 +1,12 @@
 .pointer:hover {
 	cursor: pointer;
 }
+
+.icon{
+	float: left;
+	width: auto;
+}
+
+.icon-gehalt{
+	margin-right: 0.5rem;
+}

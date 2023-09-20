@@ -73,10 +73,29 @@ function initGehalt(){
 async function addGehaltView(){
     console.log("addGehaltView");
     let gehaltsliste = await getGehalt();
-    let card = document.createElement("div");
+    let lines = gehaltsliste.split("\n");
+    console.log(lines);
+    Object(lines).forEach(function(line){
+		addGehalt(line);
+	});
+}
+
+function addGehalt(line){
+	if(line.includes("<BueroArbeiter>")){
+		line = line.replace("<BueroArbeiter>", "<span class='material-symbols-outlined icon icon-gehalt'>description</span> ");
+	}
+	if(line.includes("<SchichtArbeiter>")){
+		line = line.replace("<SchichtArbeiter>", "<span class='material-symbols-outlined icon icon-gehalt'>assignment_ind</span> ");	
+	}
+	if(line.includes("<Manager>")){
+		line = line.replace("<Manager>", "<span class='material-symbols-outlined icon icon-gehalt'>manage_accounts</span> ");		
+	}
+	console.log(line);
+	let card = document.createElement("div");
     card.className = "card";
-    card.append(createListItem(decodeURI(gehaltsliste)));
+    card.append(createListItem(decodeURI(line)));
     $("#gehalts-container").append(card);
+	
 }
 
 function addArbeiterView(){
@@ -300,7 +319,7 @@ function createListItem(text){
     let listItem = document.createElement("li");
     listItem.className = "list-group-item";
     let label =  document.createElement("label");
-    label.innerText = text;
+    label.innerHTML = text;
     listItem.appendChild(label);
     return listItem;
 }
