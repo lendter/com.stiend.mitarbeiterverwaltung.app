@@ -1,5 +1,8 @@
 const baseUrl = "/verwaltung/api";
 
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 function loadTemplates(file){
     console.log("loadTemplates  "+ file);
     return new Promise((resolve) => {
@@ -73,10 +76,29 @@ function initGehalt(){
 async function addGehaltView(){
     console.log("addGehaltView");
     let gehaltsliste = await getGehalt();
-    let card = document.createElement("div");
+    let lines = gehaltsliste.split("\n");
+    console.log(lines);
+    Object(lines).forEach(function(line){
+		addGehalt(line);
+	});
+}
+
+function addGehalt(line){
+	if(line.includes("<BueroArbeiter>")){
+		line = line.replace("<BueroArbeiter>", "<span class='material-symbols-outlined icon icon-gehalt pointer' data-bs-toggle='tooltip' title='Buero Arbeiter'>person</span> ");
+	}
+	if(line.includes("<SchichtArbeiter>")){
+		line = line.replace("<SchichtArbeiter>", "<span class='material-symbols-outlined icon icon-gehalt pointer' data-bs-toggle='tooltip' title='Schicht Arbeiter'>engineering</span> ");	
+	}
+	if(line.includes("<Manager>")){
+		line = line.replace("<Manager>", "<span class='material-symbols-outlined icon icon-gehalt pointer' data-bs-toggle='tooltip' title='Manager'>manage_accounts</span> ");		
+	}
+	console.log(line);
+	let card = document.createElement("div");
     card.className = "card";
-    card.append(createListItem(decodeURI(gehaltsliste)));
+    card.append(createListItem(decodeURI(line)));
     $("#gehalts-container").append(card);
+	
 }
 
 function addArbeiterView(){
@@ -300,7 +322,7 @@ function createListItem(text){
     let listItem = document.createElement("li");
     listItem.className = "list-group-item";
     let label =  document.createElement("label");
-    label.innerText = text;
+    label.innerHTML = text;
     listItem.appendChild(label);
     return listItem;
 }

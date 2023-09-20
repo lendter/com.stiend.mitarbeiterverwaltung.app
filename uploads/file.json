@@ -1,1 +1,1 @@
-{"name":"Development","mitarbeiter":[],"leiter":{"bonusSatz":0.05,"festgehalt":4000.0,"id":2,"name":"Peter Lustig"}}
+{"name":"Development","mitarbeiter":[{"stundenSatz":13.0,"anzahlStunden":140,"id":3001,"name":"Horst Peter"},{"festgehalt":3000.0,"id":5101,"name":"Harald Schmitt"}],"leiter":{"bonusSatz":0.05,"festgehalt":4000.0,"id":2,"name":"Peter Lustig"}}
