@@ -18,6 +18,10 @@ import com.stiend.mitarbeiterverwaltung.app.helper.Serialisation;
 
 import cli.*;
 import jakarta.annotation.PostConstruct;
+import mitarbeiter.BueroArbeiter;
+import mitarbeiter.Manager;
+import mitarbeiter.SchichtArbeiter;
+import model.Mitarbeiter;
 import verwaltung.*;
 
 @RestController()

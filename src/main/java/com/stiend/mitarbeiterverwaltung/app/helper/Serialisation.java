@@ -17,11 +17,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import mitarbeiter.BueroArbeiter;
+import mitarbeiter.Manager;
+import mitarbeiter.SchichtArbeiter;
+import model.Mitarbeiter;
 import verwaltung.Abteilung;
-import verwaltung.BueroArbeiter;
-import verwaltung.Manager;
-import verwaltung.Mitarbeiter;
-import verwaltung.SchichtArbeiter;
 
 public class Serialisation {
 	private String filePath;
